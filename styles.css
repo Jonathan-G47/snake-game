@@ -1,0 +1,170 @@
+:root {
+    --color-fondo: #222;
+    --color-letra: #ddd;
+}
+
+*{
+    font-family: sans-serif;
+}
+
+body{
+    background-color:var(--color-fondo) ;
+    color: var(--color-letra);
+}
+
+#board, .boardInfo{
+    margin: auto;
+}
+
+#board{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    aspect-ratio: 1;
+    width: min(80vmin, 700px); /* se adapta sin pasarse */
+    border: 2px solid #4f4;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 #0f0;
+    margin-top: 25px;
+    max-width: 80vw;
+    display: none;
+    }
+
+#start, .boardInfo{
+    font-size: 25px;
+}
+
+.boardInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#score{
+    display: none;
+}
+
+#start{
+    background-color: var(--color-fondo);
+    color: #fff;
+    margin: auto;
+    border: 2px solid #4f4;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 #0f0;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animación cómica al hacer hover */
+#start:hover {
+    transform: scale(1.2) rotate(10deg) translateY(-10px);
+    background-color: #0f0;
+    box-shadow: 0 0 30px 5px #4f4;
+}
+
+/* Animación de rebote continuo */
+@keyframes rebote-comico {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(0); }
+    25%  { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+    75%  { transform: translateY(-3px); }
+}
+
+/* Aplicar rebote cuando el mouse está encima */
+#start:hover {
+    animation: rebote-comico 0.6s ease infinite;
+}
+
+#scoreBoard {
+    display: inline-flex;
+}
+
+.square{
+    border-radius: 40%;
+}
+
+.emptySquare{
+    
+}
+
+.snakeSquare{
+    background-color: #ccf47f;
+}
+.foodSquare{
+    background-color: #f35a69;
+}
+
+.snakeHead {
+    background-color: #ff0; /* amarillo brillante */
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px 2px #ff0;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px #0f0;
+}
+
+#restart {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    background-color: var(--color-fondo);
+    color: #fff;
+    border: 2px solid #4f4;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 #0f0;
+    transition: transform 0.3s ease;
+    margin-right: 10px;
+}
+
+#restart:hover {
+    transform: scale(1.1);
+    background-color: #0f0;
+    box-shadow: 0 0 30px 5px #4f4;
+}
+
+#goHome {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    background-color: var(--color-fondo);
+    color: #fff;
+    border: 2px solid #44ff44;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0 #0f0;
+    transition: transform 0.3s ease;
+}
+
+#goHome:hover {
+    transform: scale(1.1);
+    background-color: #0f0;
+    box-shadow: 0 0 30px 5px #44ff44;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.eatAnimation {
+    animation: pulse 0.3s ease;
+}
